@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.contenedor {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 150px 150px 150px;
+  gap: 10px;
+  width: 900px;
+  border: 5px solid black;
+}
+
+.caja {
+  
+}
+
+/* Fila 1: salmón ocupa 2 columnas, cyan ocupa 1 */
+.salmon {
+  grid-column: 1 / 3;
+  grid-row: 1;
+  background-color: #e8604c;
+}x
+
+.cyan-top {
+  grid-column: 3;
+  grid-row: 1;
+  background-color: cyan;
+}
+
+/* Fila 2: amarillo ocupa las 3 columnas */
+.amarillo {
+  grid-column: 1 / 4;
+  grid-row: 2;
+  background-color: yellow;
+}
+
+/* Fila 3: cyan ocupa 1 columna, azul ocupa 2 columnas */
+.cyan-bottom {
+  grid-column: 1;
+  grid-row: 3;
+  background-color: cyan;
+}
+
+.azul {
+  grid-column: 2 / 4;
+  grid-row: 3;
+  background-color: blue;
+}

@@ -1,0 +1,55 @@
+.contenedor {
+    background-color: lightcoral;
+    display: flex;
+    flex-direction: row;
+}
+.principal {
+    flex: 4
+}
+
+.logo {
+    background-color: brown;
+}
+.menu {
+    background-color: brown;
+}
+header {
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+footer {
+    background-color: blue;
+}
+
+
+main {
+    background-color: green;
+    padding: 10px;
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+}
+
+section {
+    background-color: lime;
+    flex: 1;
+}
+article {
+    background-color: greenyellow;
+}
+
+aside {
+    background-color: aqua;
+    flex: 1;
+}
+
+
+h1 {
+    margin: 5px;
+}
+h2 {
+    margin: 0px;
+}
