@@ -129,8 +129,9 @@ img{
   .header-container{
     max-width: $container;
     margin: 0 auto;
-    @include flex(space-between);
-    height: 70px;
+    @include flex(space-between, flex-start, column);
+    padding: 15px 0;
+    align-items: center;
   }
 
   .logo{
@@ -146,12 +147,8 @@ img{
 
   /* Navegacion con Flexbox */
   .menu{
-    @include flex(flex-end, center, row);
+    @include flex(flex-end, center, column);
     gap: 15px;
-
-    @media (min-width: $tablet){
-      gap: 25px;
-    }
 
     a{
       color: rgba(255, 255, 255, 0.8);
@@ -207,15 +204,6 @@ img{
     font-size: 2rem;
     margin-bottom: 15px;
     letter-spacing: 1px;
-
-    @media (min-width: $tablet){
-      font-size: 2.8rem;
-    }
-
-    @media (min-width: $laptop){
-      font-size: 3.5rem;
-      letter-spacing: 2px;
-    }
   }
 
   .subtitle{
@@ -234,10 +222,6 @@ img{
     grid-template-columns: 1fr;
     gap: 40px;
     align-items: center;
-
-    @media (min-width: $tablet){
-      grid-template-columns: 300px 1fr;
-    }
   }
 
   .about-text p{
@@ -273,14 +257,6 @@ img{
     display: grid;
     grid-template-columns: 1fr;
     gap: 25px;
-
-    @media (min-width: $tablet){
-      grid-template-columns: 1fr 1fr;
-    }
-
-    @media (min-width: $laptop){
-      grid-template-columns: 1fr 1fr 1fr;
-    }
   }
 
   .card{
@@ -338,10 +314,6 @@ img{
     display: grid;
     grid-template-columns: 1fr;
     gap: 25px;
-
-    @media (min-width: $tablet){
-      grid-template-columns: 1fr 1fr;
-    }
   }
 }
 
@@ -475,10 +447,6 @@ img{
     grid-template-columns: 1fr;
     gap: 40px;
     align-items: start;
-
-    @media (min-width: $tablet){
-      grid-template-columns: 1fr 1fr;
-    }
   }
 
   .contact-info h3{
@@ -583,14 +551,9 @@ img{
   .footer-container{
     max-width: $container;
     margin: 0 auto;
-    @include flex(space-between);
-    flex-direction: column;
+    @include flex(center, center, column);
     gap: 15px;
-
-    @media (min-width: $tablet){
-      flex-direction: row;
-      gap: 0;
-    }
+    text-align: center;
   }
 
   .footer-left h3{
@@ -620,6 +583,69 @@ img{
     a:hover{
       color: $primary;
     }
+  }
+
+}
+
+/* ========== TABLET (768px+) ========== */
+@media (min-width: $tablet){
+
+  .header .header-container{
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    height: 70px;
+  }
+
+  .header .menu{
+    flex-direction: row;
+    gap: 25px;
+  }
+
+  .hero-title{
+    font-size: 2.8rem;
+  }
+
+  .about .about-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .skills .skills-grid{
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .projects .projects-grid{
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .contact .contact-grid{
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer .footer-container{
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+  }
+
+}
+
+/* ========== DESKTOP (1024px+) ========== */
+@media (min-width: $laptop){
+
+  .hero-title{
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+  }
+
+  .skills .skills-grid{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .footer .footer-container{
+    flex-direction: row;
+    gap: 0;
   }
 
 }

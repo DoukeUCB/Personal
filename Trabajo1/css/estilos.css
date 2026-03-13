@@ -98,9 +98,10 @@ img {
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
-  height: 70px;
+  padding: 15px 0;
+  align-items: center;
 }
 .header .logo {
   font-size: 1.5rem;
@@ -118,13 +119,8 @@ img {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
   gap: 15px;
-}
-@media (min-width: 768px) {
-  .header .menu {
-    gap: 25px;
-  }
 }
 .header .menu a {
   color: rgba(255, 255, 255, 0.8);
@@ -177,17 +173,6 @@ img {
   margin-bottom: 15px;
   letter-spacing: 1px;
 }
-@media (min-width: 768px) {
-  .hero .hero-title {
-    font-size: 2.8rem;
-  }
-}
-@media (min-width: 1024px) {
-  .hero .hero-title {
-    font-size: 3.5rem;
-    letter-spacing: 2px;
-  }
-}
 .hero .subtitle {
   font-size: 1.3rem;
   color: rgba(255, 255, 255, 0.8);
@@ -205,11 +190,6 @@ img {
   grid-template-columns: 1fr;
   gap: 40px;
   align-items: center;
-}
-@media (min-width: 768px) {
-  .about .about-grid {
-    grid-template-columns: 300px 1fr;
-  }
 }
 .about .about-text p {
   margin-bottom: 15px;
@@ -240,16 +220,6 @@ img {
   display: grid;
   grid-template-columns: 1fr;
   gap: 25px;
-}
-@media (min-width: 768px) {
-  .skills .skills-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-@media (min-width: 1024px) {
-  .skills .skills-grid {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
 }
 .skills .card {
   background: #f8f9fa;
@@ -301,11 +271,6 @@ img {
   display: grid;
   grid-template-columns: 1fr;
   gap: 25px;
-}
-@media (min-width: 768px) {
-  .projects .projects-grid {
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 .project-card {
@@ -439,11 +404,6 @@ img {
   gap: 40px;
   align-items: start;
 }
-@media (min-width: 768px) {
-  .contact .contact-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
 .contact .contact-info h3 {
   font-size: 1.5rem;
   color: #1a1a2e;
@@ -548,17 +508,11 @@ img {
   max-width: 1100px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
-  flex-direction: column;
   gap: 15px;
-}
-@media (min-width: 768px) {
-  .footer .footer-container {
-    flex-direction: row;
-    gap: 0;
-  }
+  text-align: center;
 }
 .footer .footer-left h3 {
   font-size: 1.3rem;
@@ -585,6 +539,55 @@ img {
 }
 .footer .footer-right a:hover {
   color: #0d6efd;
+}
+
+/* ========== TABLET (768px+) ========== */
+@media (min-width: 768px) {
+  .header .header-container {
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    height: 70px;
+  }
+  .header .menu {
+    flex-direction: row;
+    gap: 25px;
+  }
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  .about .about-grid {
+    grid-template-columns: 1fr;
+  }
+  .skills .skills-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .projects .projects-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .contact .contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer .footer-container {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+  }
+}
+/* ========== DESKTOP (1024px+) ========== */
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+  }
+  .skills .skills-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .footer .footer-container {
+    flex-direction: row;
+    gap: 0;
+  }
 }
 
 /*# sourceMappingURL=estilos.css.map */
