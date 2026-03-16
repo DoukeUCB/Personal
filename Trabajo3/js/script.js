@@ -1,62 +1,143 @@
-const input = document.getElementById("inputBusqueda");
-//input donde el usuario escribe
-const lista = document.getElementById("sugerencias");
-//lista ul
+const hamburger = document.getElementById("hamburger");
+const nav = document.getElementById("nav");
+const modoOscuro = document.getElementById("modoOscuro");
 
-// Array que contiene los datos que se usarán como sugerencias
+const formulario = document.getElementById("formulario");
+const nombre = document.getElementById("nombre");
+const mensaje = document.getElementById("mensaje");
+
+const btnArriba = document.getElementById("btnArriba");
+
+const abrirModal = document.getElementById("abrirModal");
+const modal = document.getElementById("modal");
+const cerrarModal = document.getElementById("cerrarModal");
+
+const botonesFiltro = document.querySelectorAll(".filtros button");
+const items = document.querySelectorAll(".galeria .item");
+
+const input = document.getElementById("inputBusqueda");
+const lista = document.getElementById("sugerencias");
+
 const datos = [
-"JavaScript",
-"Java",
-"Python",
-"PHP",
-"HTML",
-"CSS",
-"React",
-"Angular",
-"NodeJS"
+    "JavaScript",
+    "Java",
+    "Python",
+    "PHP",
+    "HTML",
+    "CSS",
+    "React",
+    "Angular",
+    "NodeJS"
 ];
 
-// Detecta cuando el usuario escribe dentro del input
-input.addEventListener("input", function(){
+hamburger.addEventListener("click", function() {
+    nav.classList.toggle("activo");
+});
 
-    //recuperamos los escrito y uniformamos a minusculas
-    const texto = input.value.toLowerCase();
+modoOscuro.addEventListener("click", function() {
+    document.body.classList.toggle("dark");
+});
 
-    // Limpia la lista de sugerencias anteriores
+function validarCampo() {
+    const valor = nombre.value.trim();
+
+    if (valor.length < 3) {
+        mensaje.textContent = "El nombre debe tener al menos 3 caracteres.";
+        mensaje.classList.remove("ok");
+        return false;
+    }
+
+    mensaje.textContent = "Nombre válido.";
+    mensaje.classList.add("ok");
+    return true;
+}
+
+nombre.addEventListener("input", validarCampo);
+
+formulario.addEventListener("submit", function(e) {
+    if (!validarCampo()) {
+        e.preventDefault();
+    }
+});
+
+window.addEventListener("scroll", function() {
+    if (window.scrollY > 250) {
+        btnArriba.classList.add("mostrar");
+    } else {
+        btnArriba.classList.remove("mostrar");
+    }
+});
+
+btnArriba.addEventListener("click", function() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
+abrirModal.addEventListener("click", function() {
+    modal.classList.add("abierto");
+});
+
+cerrarModal.addEventListener("click", function() {
+    modal.classList.remove("abierto");
+});
+
+modal.addEventListener("click", function(e) {
+    if (e.target === modal) {
+        modal.classList.remove("abierto");
+    }
+});
+
+window.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") {
+        modal.classList.remove("abierto");
+    }
+});
+
+botonesFiltro.forEach(function(boton) {
+    boton.addEventListener("click", function() {
+        const categoria = boton.dataset.categoria;
+
+        botonesFiltro.forEach(function(btn) {
+            btn.classList.remove("activo");
+        });
+        boton.classList.add("activo");
+
+        items.forEach(function(item) {
+            if (categoria === "todos" || item.classList.contains(categoria)) {
+                item.classList.remove("oculto");
+            } else {
+                item.classList.add("oculto");
+            }
+        });
+    });
+});
+
+input.addEventListener("input", function() {
+    const texto = input.value.toLowerCase().trim();
     lista.innerHTML = "";
 
-    // Si el usuario no escribió nada, termina la función
-    if(texto === ""){
+    if (texto === "") {
         return;
     }
 
-    // Recorre todos los datos del array
-    datos.forEach(function(item){
-
-        // Verifica si el elemento contiene el texto escrito
-        if(item.toLowerCase().includes(texto)){
-
-            // Crea un nuevo elemento <li> para mostrar la sugerencia
+    datos.forEach(function(item) {
+        if (item.toLowerCase().includes(texto)) {
             const li = document.createElement("li");
-
-            // Coloca el texto de la sugerencia dentro del <li>
             li.textContent = item;
-
-            // Agrega la sugerencia a la lista del HTML
             lista.appendChild(li);
 
-            // Si el usuario hace click en una sugerencia
-            li.addEventListener("click", function(){
-
-                // Coloca esa sugerencia en el input
+            li.addEventListener("click", function() {
                 input.value = item;
-                // Limpia la lista de sugerencias
                 lista.innerHTML = "";
-
             });
-
         }
-
     });
+});
 
+document.addEventListener("click", function(e) {
+    if (e.target !== input) {
+        lista.innerHTML = "";
+    }
 });

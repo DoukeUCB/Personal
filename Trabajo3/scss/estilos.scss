@@ -14,12 +14,18 @@ align-items:center;
 flex-wrap:wrap;
 }
 
+.header h1{
+margin:0;
+font-size:24px;
+}
+
 .nav ul{
 list-style:none;
 padding:0;
 margin:0;
 display:flex;
 gap:15px;
+flex-direction:column;
 }
 
 .nav a{
@@ -28,7 +34,30 @@ text-decoration:none;
 }
 
 #hamburger{
+display:block;
+background:#444;
+color:white;
+border:none;
+padding:8px 12px;
+cursor:pointer;
+}
+
+#modoOscuro{
+background:#444;
+color:white;
+border:none;
+padding:8px 12px;
+cursor:pointer;
+}
+
+.nav{
+width:100%;
 display:none;
+margin-top:12px;
+}
+
+.nav.activo{
+display:block;
 }
 
 .seccion{
@@ -52,6 +81,17 @@ margin-bottom:20px;
 
 .filtros button{
 margin-right:10px;
+margin-bottom:10px;
+padding:8px 12px;
+cursor:pointer;
+border:1px solid #bbb;
+background:#f6f6f6;
+}
+
+.filtros button.activo{
+background:#333;
+color:white;
+border-color:#333;
 }
 
 .galeria{
@@ -79,6 +119,11 @@ max-width:400px;
 
 #mensaje{
 color:red;
+margin:0;
+}
+
+#mensaje.ok{
+color:green;
 }
 
 #btnArriba{
@@ -87,6 +132,14 @@ bottom:20px;
 right:20px;
 display:none;
 padding:10px;
+border:none;
+background:#333;
+color:white;
+cursor:pointer;
+}
+
+#btnArriba.mostrar{
+display:block;
 }
 
 .modal{
@@ -97,6 +150,10 @@ left:0;
 width:100%;
 height:100%;
 background:rgba(0,0,0,0.6);
+}
+
+.modal.abierto{
+display:block;
 }
 
 .modal-contenido{
@@ -125,4 +182,31 @@ background:#1e1e1e;
 
 .dark .item{
 background:#333;
+}
+
+.dark .header,
+.dark #btnArriba,
+.dark .filtros button.activo{
+background:#000;
+}
+
+.dark #modoOscuro,
+.dark #hamburger{
+background:#222;
+}
+
+@media (min-width: 768px){
+.nav{
+display:block;
+width:auto;
+margin-top:0;
+}
+
+.nav ul{
+flex-direction:row;
+}
+
+#hamburger{
+display:none;
+}
 }
