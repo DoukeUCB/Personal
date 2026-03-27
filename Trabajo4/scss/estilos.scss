@@ -1,0 +1,72 @@
+// Variables
+$color-primario: blue;
+$color-secundario: gray;
+$color-texto: #000;
+
+// reset basico
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// Reset básico
+body {
+  font-family: Arial;
+  color: $color-texto;
+}
+
+// Header
+header {
+  h1 {
+    text-align: center;
+  }
+}
+
+// Navegación
+nav {
+  a {
+    margin: 5px;
+    text-decoration: none;
+    color: $color-primario;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Contenido principal
+main {
+  padding: 10px;
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  form {
+    input {
+      display: block;
+      margin: 10px 0;
+      padding: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background: $color-secundario;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  #mensaje {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+}
