@@ -2,7 +2,9 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Servicio Web</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Servicio Web con formulario de contacto y validación de datos para mejorar la experiencia del usuario.">
+  <title>Servicio Web - Formulario de Contacto</title>
   <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
@@ -11,7 +13,7 @@
   <h1>Bienvenido</h1>
 </header>
 
-<nav>
+<nav aria-label="Navegación principal">
   <a href="#">Inicio</a>
   <a href="#">Servicios</a>
   <a href="#">Contacto</a>
@@ -19,17 +21,21 @@
 
 <main>
   <h2>Formulario</h2>
-  <img src="">
+  <img src="img/icon.png" alt="Imagen de un formulario" loading="lazy">
 
-  <form id="formulario">
-    <input type="text" id="nombre" placeholder="Nombre">
-    <input type="email" id="correo" placeholder="Correo">
+  <form id="formulario" novalidate>
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" placeholder="Nombre" autocomplete="name" aria-describedby="mensaje">
+
+    <label for="correo">Correo</label>
+    <input type="email" id="correo" placeholder="Correo" autocomplete="email" aria-describedby="mensaje">
+
     <button type="submit">Enviar</button>
   </form>
 
-  <p id="mensaje"></p>
+  <p id="mensaje" role="alert" aria-live="polite"></p>
 </main>
 
-<script src="js/script.js"></script>
+<script src="js/script.js" defer></script>
 </body>
 </html>

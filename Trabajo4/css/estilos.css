@@ -7,39 +7,86 @@
 body {
   font-family: Arial;
   color: #000;
+  background: #f6f8fc;
+  line-height: 1.5;
 }
 
+header {
+  background: white;
+  padding: 16px;
+}
 header h1 {
   text-align: center;
 }
 
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  flex-wrap: wrap;
+  background: white;
+}
 nav a {
   margin: 5px;
   text-decoration: none;
-  color: blue;
+  color: #1f5fbf;
+  padding: 6px 10px;
+  border-radius: 6px;
 }
 nav a:hover {
-  text-decoration: underline;
+  background: #e9eefb;
 }
 
 main {
-  padding: 10px;
+  padding: 16px;
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 main h2 {
   margin-bottom: 10px;
+}
+main img {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+main form {
+  background: white;
+  padding: 16px;
+  border-radius: 10px;
+}
+main form label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
 }
 main form input {
   display: block;
   margin: 10px 0;
   padding: 8px;
   border: 1px solid #ccc;
+  width: 100%;
+  border-radius: 6px;
+}
+main form input:focus {
+  outline: 2px solid #b7cdf7;
+}
+main form .campo-error {
+  border-color: #c62828;
 }
 main form button {
-  background: gray;
+  background: #5f6670;
   color: white;
   border: none;
   padding: 10px;
   cursor: pointer;
+  border-radius: 6px;
+  width: 100%;
 }
 main form button:hover {
   opacity: 0.8;
@@ -47,6 +94,21 @@ main form button:hover {
 main #mensaje {
   margin-top: 10px;
   font-weight: bold;
+}
+main #mensaje.error {
+  color: #c62828;
+}
+main #mensaje.ok {
+  color: #1b7f3b;
+}
+
+@media (min-width: 768px) {
+  nav {
+    justify-content: center;
+  }
+  main {
+    padding: 24px;
+  }
 }
 
 /*# sourceMappingURL=estilos.css.map */
