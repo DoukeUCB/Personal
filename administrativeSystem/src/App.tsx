@@ -1,15 +1,10 @@
 import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
+import type { IconName } from './components/Icon'
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
 import Footer from './components/Footer'
-import { navigationItems } from './data/navigation'
-import HomePage from './pages/HomePage'
-import UsersPage from './pages/UsersPage'
-import ReportsPage from './pages/ReportsPage'
-import SettingsPage from './pages/SettingsPage'
-import CalendarPage from './pages/CalendarPage'
-import NotFoundPage from './pages/NotFoundPage'
+import { routes } from './data/routes'
 import './App.css'
 
 function App() {
@@ -17,6 +12,21 @@ function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
   const appClass = isDark ? 'app dark' : 'app'
+  const iconByPath: Record<string, IconName> = {
+    '/': 'home',
+    '/usuarios': 'users',
+    '/reportes': 'reports',
+    '/calendario': 'calendar',
+    '/configuracion': 'settings',
+  }
+
+  const navigationItems = routes
+    .filter((route) => route.path !== '*')
+    .map((route) => ({
+      path: route.path,
+      label: route.name,
+      icon: iconByPath[route.path] ?? 'home',
+    }))
 
   return (
     <div className={appClass}>
@@ -32,12 +42,13 @@ function App() {
 
         <main className="content">
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/usuarios" element={<UsersPage />} />
-            <Route path="/reportes" element={<ReportsPage />} />
-            <Route path="/calendario" element={<CalendarPage />} />
-            <Route path="/configuracion" element={<SettingsPage />} />
-            <Route path="*" element={<NotFoundPage />} />
+            {routes.map((route) => (
+              <Route
+                key={route.path}
+                path={route.path}
+                element={route.element}
+              />
+            ))}
           </Routes>
         </main>
       </div>
