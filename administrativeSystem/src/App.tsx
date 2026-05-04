@@ -8,12 +8,13 @@ import HomePage from './pages/HomePage'
 import UsersPage from './pages/UsersPage'
 import ReportsPage from './pages/ReportsPage'
 import SettingsPage from './pages/SettingsPage'
+import CalendarPage from './pages/CalendarPage'
 import NotFoundPage from './pages/NotFoundPage'
 import './App.css'
 
 function App() {
   const [isDark, setIsDark] = useState(false)
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
   const appClass = isDark ? 'app dark' : 'app'
 
@@ -34,6 +35,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/usuarios" element={<UsersPage />} />
             <Route path="/reportes" element={<ReportsPage />} />
+            <Route path="/calendario" element={<CalendarPage />} />
             <Route path="/configuracion" element={<SettingsPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

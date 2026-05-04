@@ -1,9 +1,10 @@
 import { NavLink } from 'react-router-dom'
+import Icon, { type IconName } from './Icon'
 
 export type NavItem = {
   path: string
   label: string
-  icon: string
+  icon: IconName
 }
 
 type SidebarProps = {
@@ -22,7 +23,7 @@ export default function Sidebar({ items, isOpen }: SidebarProps) {
                 to={item.path}
                 className={({ isActive }) => (isActive ? 'active' : '')}
               >
-                <span aria-hidden="true">{item.icon}</span>
+                <Icon name={item.icon} />
                 <span>{item.label}</span>
               </NavLink>
             </li>
